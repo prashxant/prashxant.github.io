@@ -1,6 +1,13 @@
 @import "tailwindcss";
 
 :root {
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-mono:
+    ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+
   --background: #ffffff;
   --foreground: #0f1419;
   --card: #f7f8f8;
@@ -61,9 +68,15 @@
 
 html {
   min-width: 360px;
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
 }
 
 body {
+  font-family: var(--font-sans);
   background-color: var(--background);
   color: var(--foreground);
   transition:
@@ -86,11 +99,13 @@ body {
 }
 
 .prose a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  @apply underline transition-all underline-offset-2 decoration-[0.1em];
+  color: var(--primary);
+  text-decoration-color: var(--border);
 }
 
 .prose .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
+  color: var(--muted-foreground);
   content: "#";
 }
 
@@ -99,7 +114,10 @@ body {
 }
 
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+  @apply rounded-lg overflow-x-auto border py-2 px-3 text-sm;
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border-color: var(--border);
 }
 
 .prose code {
@@ -122,7 +140,8 @@ body {
 }
 
 .prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
+  @apply my-4;
+  color: var(--foreground);
 }
 
 .prose h1 {
@@ -185,4 +204,12 @@ table {
 
 .title {
   text-wrap: balance;
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
 }

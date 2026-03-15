@@ -1,6 +1,6 @@
 import { Magnetic } from "./motion-primitives/magnetic";
 
- export function MagneticSocialLink({
+export function MagneticSocialLink({
   children,
   link,
 }: {
@@ -12,7 +12,7 @@ import { Magnetic } from "./motion-primitives/magnetic";
       <a
         href={link}
         target="_blank"
-        className="group relative inline-flex shrink-0 items-center gap-px rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+        className="group relative inline-flex shrink-0 items-center gap-px rounded-full border border-(--border) bg-(--card) px-2.5 py-1 text-sm text-(--foreground) transition-colors duration-200 hover:bg-(--primary) hover:text-(--primary-foreground)"
       >
         {children}
         <svg

@@ -1,10 +1,8 @@
-'use client'
+"use client";
 
 import { motion } from "motion/react";
 import { MagneticSocialLink } from "./MagneticSocial";
 import { EMAIL, SOCIAL_LINKS } from "@/app/data";
-
-
 
 const VARIANTS_SECTION = {
   hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
@@ -18,9 +16,9 @@ export const Connect = () => {
   return (
     <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
       <h3 className="mb-5 text-lg font-medium">Connect</h3>
-      <p className="mb-5 text-zinc-600 dark:text-zinc-400">
+      <p className="mb-5 text-(--muted-foreground)">
         Feel free to contact me at{" "}
-        <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
+        <a className="underline text-(--primary)" href={`mailto:${EMAIL}`}>
           {EMAIL}
         </a>
       </p>
@@ -32,4 +30,5 @@ export const Connect = () => {
         ))}
       </div>
     </motion.section>
-  );}
+  );
+};

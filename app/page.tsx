@@ -2,18 +2,17 @@ import { BlogPosts } from "components/posts";
 import { SpinningText } from "components/motion-primitives/spinning-text";
 import Image from "next/image";
 import { TextScramble } from "components/motion-primitives/text-scramble";
-import { Connect } from "@/components/Connect";
+
 import GithubHeatmap from "@/components/GItHubHeatmap";
 import { ThemePaletteSlider } from "@/components/ThemePaletteSlider";
-
-
+import { Connect } from "@/components/connect";
 
 export default function Page() {
   return (
     <section>
       <div className="relative flex items-center justify-center w-50 h-50">
         <Image
-          className="aspect-square border mr-16 border-amber-100 rounded-full bg-white object-cover"
+          className="aspect-square border mr-16 rounded-full object-cover border-(--border) bg-(--card)"
           width={110}
           height={110}
           src="/pfpp.png"
@@ -32,7 +31,7 @@ export default function Page() {
       <TextScramble
         duration={1.5}
         characterSet=". "
-        className="mb-8 text-md text-white/50 font-extralight"
+        className="mb-8 text-md font-extralight text-(--muted-foreground)"
       >
         Trying to understand tech
       </TextScramble>
@@ -45,7 +44,7 @@ export default function Page() {
         mode, which eases long coding sessions by reducing eye strain.`}
       </p>
       <div className="my-8">
-        <ThemePaletteSlider/>
+        <ThemePaletteSlider />
       </div>
       <div className="my-8">
         <GithubHeatmap />
