@@ -2,15 +2,15 @@ import { BlogPosts } from "components/posts";
 import { SpinningText } from "components/motion-primitives/spinning-text";
 import Image from "next/image";
 import { TextScramble } from "components/motion-primitives/text-scramble";
-import { EMAIL, SOCIAL_LINKS } from "./data";
 import { Connect } from "@/components/connect";
+import GithubHeatmap from "@/components/GItHubHeatmap";
 
 
 
 export default function Page() {
   return (
     <section>
-      <div className="relative flex items-center justify-center w-[200px] h-[200px]">
+      <div className="relative flex items-center justify-center w-50 h-50">
         <Image
           className="aspect-square border mr-16 border-amber-100 rounded-full bg-white object-cover"
           width={110}
@@ -20,7 +20,7 @@ export default function Page() {
         />
 
         <SpinningText radius={6.8} className="mr-16 absolute">
-          {`pre-order • pre-order • pre-order • `}
+          {`BUILD • SHIP • LEARN • REPEAT •`}
         </SpinningText>
       </div>
 
@@ -44,10 +44,13 @@ export default function Page() {
         mode, which eases long coding sessions by reducing eye strain.`}
       </p>
       <div className="my-8">
+        <GithubHeatmap/>
+      </div>
+      <div className="my-8">
         <BlogPosts />
       </div>
-      <div className="pt-8">
-        <Connect/>
+      <div className="">
+        <Connect />
       </div>
     </section>
   );

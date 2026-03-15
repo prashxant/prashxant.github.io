@@ -68,18 +68,22 @@ function ThemeSwitch() {
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t  border-black px-0 py-4 dark:border-white">
+    <footer className="my-16 border-t  border-black px-0 py-4 dark:border-white">
       <div className="flex items-center justify-between">
         <a
           href="https://github.com/prashxant/prashxant.github.io"
           target="_blank"
           rel="noreferrer"
         >
+          <span className="text-xs text-white pr-1">Butilt with</span>
           <TextLoop className="text-xs text-white">
-            <span>© 2024 Nim.</span>
-            <span>Built with Motion-Primitives.</span>
+            <span>Next.js.</span>
+            <span>Motion-Primitives.</span>
+            <span>Tailwind.</span>
+            <span>❤️ also.. </span>
           </TextLoop>
         </a>
+
         <div className="text-xs text-white">
           <ThemeSwitch />
         </div>
