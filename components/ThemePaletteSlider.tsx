@@ -1152,7 +1152,11 @@ function PalettePill({
   onClick: () => void;
 }) {
   const tokens = palette.tokens[mode];
-  const swatches = [tokens.primary, tokens.accent, tokens.muted];
+  const swatches = [
+    { name: "primary", color: tokens.primary },
+    { name: "accent", color: tokens.accent },
+    { name: "muted", color: tokens.muted },
+  ];
 
   return (
     <button
@@ -1174,9 +1178,9 @@ function PalettePill({
       }}
     >
       <span className="flex items-center gap-1.5">
-        {swatches.map((color) => (
+        {swatches.map(({ name, color }) => (
           <span
-            key={`${palette.id}-${color}`}
+            key={`${palette.id}-${name}-${color}`}
             className="size-4 rounded-[0.35rem] border border-(--border)"
             style={{ backgroundColor: color }}
           />
