@@ -1,61 +1,91 @@
-function ArrowIcon() {
+"use client";
+import { AnimatedBackground } from "@/components/ui/animated-background";
+import { TextLoop } from "@/components/ui/text-loop";
+import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+
+const THEMES_OPTIONS = [
+  {
+    label: "Light",
+    id: "light",
+    icon: <SunIcon className="h-4 w-4" />,
+  },
+  {
+    label: "Dark",
+    id: "dark",
+    icon: <MoonIcon className="h-4 w-4" />,
+  },
+  {
+    label: "System",
+    id: "system",
+    icon: <MonitorIcon className="h-4 w-4" />,
+  },
+];
+
+function ThemeSwitch() {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <AnimatedBackground
+      className="pointer-events-none rounded-lg bg-zinc-100 dark:bg-zinc-800"
+      defaultValue={theme}
+      transition={{
+        type: "spring",
+        bounce: 0,
+        duration: 0.2,
+      }}
+      enableHover={false}
+      onValueChange={(id) => {
+        setTheme(id as string);
+      }}
     >
-      <path
-        d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
-        fill="currentColor"
-      />
-    </svg>
-  )
+      {THEMES_OPTIONS.map((theme) => {
+        return (
+          <button
+            key={theme.id}
+            className="inline-flex h-7 w-7 items-center justify-center text-zinc-500 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-950 dark:text-zinc-400 dark:data-[checked=true]:text-zinc-50"
+            type="button"
+            aria-label={`Switch to ${theme.label} theme`}
+            data-id={theme.id}
+          >
+            {theme.icon}
+          </button>
+        );
+      })}
+    </AnimatedBackground>
+  );
 }
 
-export default function Footer() {
+export function Footer() {
   return (
-    <footer className="mb-16">
-      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="/rss"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">rss</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://github.com/vercel/next.js"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">github</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://vercel.com/templates/next.js/portfolio-starter-kit"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">view source</p>
-          </a>
-        </li>
-      </ul>
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-        © {new Date().getFullYear()} MIT Licensed
-      </p>
+    <footer className="mt-24 border-t  border-black px-0 py-4 dark:border-white">
+      <div className="flex items-center justify-between">
+        <a
+          href="https://github.com/prashxant/prashxant.github.io"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <TextLoop className="text-xs text-white">
+            <span>© 2024 Nim.</span>
+            <span>Built with Motion-Primitives.</span>
+          </TextLoop>
+        </a>
+        <div className="text-xs text-white">
+          <ThemeSwitch />
+        </div>
+      </div>
     </footer>
-  )
+  );
 }
+
+export default Footer;

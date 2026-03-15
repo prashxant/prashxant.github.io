@@ -2,6 +2,10 @@ import { BlogPosts } from "components/posts";
 import { SpinningText } from "components/motion-primitives/spinning-text";
 import Image from "next/image";
 import { TextScramble } from "components/motion-primitives/text-scramble";
+import { EMAIL, SOCIAL_LINKS } from "./data";
+import { Connect } from "@/components/connect";
+
+
 
 export default function Page() {
   return (
@@ -41,6 +45,9 @@ export default function Page() {
       </p>
       <div className="my-8">
         <BlogPosts />
+      </div>
+      <div className="pt-8">
+        <Connect/>
       </div>
     </section>
   );
