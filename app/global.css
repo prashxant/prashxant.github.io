@@ -1,22 +1,6 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
-::selection {
-  background-color: var(--selection-bg);
-  color: var(--selection-fg);
-}
-
 :root {
-  --sh-class: #2d5e9d;
-  --sh-identifier: #354150;
-  --sh-sign: #8996a3;
-  --sh-string: #007f7a;
-  --sh-keyword: #e02518;
-  --sh-comment: #a19595;
-  --sh-jsxliterals: #6266d1;
-  --sh-property: #e25a1c;
-  --sh-entity: #e25a1c;
   --background: #ffffff;
   --foreground: #0f1419;
   --card: #f7f8f8;
@@ -29,16 +13,21 @@
   --accent-foreground: #1e9df1;
   --border: #e1eaef;
   --ring: #1da1f2;
-  --selection-bg: #1e9df1;
-  --selection-fg: #ffffff;
-  color-scheme: light;
+  --selection-bg: var(--primary);
+  --selection-fg: var(--primary-foreground);
+
+  --sh-class: #2d5e9d;
+  --sh-identifier: #354150;
+  --sh-sign: #8996a3;
+  --sh-string: #007f7a;
+  --sh-keyword: #e02518;
+  --sh-comment: #a19595;
+  --sh-jsxliterals: #6266d1;
+  --sh-property: #e25a1c;
+  --sh-entity: #e25a1c;
 }
 
-:root.dark {
-  --sh-class: #4c97f8;
-  --sh-identifier: white;
-  --sh-keyword: #f47067;
-  --sh-string: #0fa295;
+.dark {
   --background: #000000;
   --foreground: #e7e9ea;
   --card: #17181c;
@@ -51,29 +40,35 @@
   --accent-foreground: #1c9cf0;
   --border: #242628;
   --ring: #1da1f2;
-  --selection-bg: #1c9cf0;
-  --selection-fg: #ffffff;
-  color-scheme: dark;
+}
+
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-fg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sh-class: #4c97f8;
+    --sh-identifier: white;
+    --sh-keyword: #f47067;
+    --sh-string: #0fa295;
+  }
+  html {
+    color-scheme: dark;
+  }
 }
 
 html {
   min-width: 360px;
 }
 
-html,
 body {
   background-color: var(--background);
   color: var(--foreground);
-}
-
-body {
   transition:
-    background-color 300ms ease,
-    color 300ms ease;
-}
-
-a {
-  color: var(--primary);
+    background-color 250ms ease,
+    color 250ms ease;
 }
 
 .prose .anchor {

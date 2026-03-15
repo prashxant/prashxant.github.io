@@ -3,21 +3,24 @@ import { SpinningText } from "components/motion-primitives/spinning-text";
 import Image from "next/image";
 import { TextScramble } from "components/motion-primitives/text-scramble";
 import { Connect } from "@/components/Connect";
-import GithubHeatmap from "@/components/GitHubHeatmap";
+import GithubHeatmap from "@/components/GItHubHeatmap";
 import { ThemePaletteSlider } from "@/components/ThemePaletteSlider";
+
+
 
 export default function Page() {
   return (
-    <section className="relative">
-      <div className="relative overflow-hidden flex items-center justify-center w-50 h-50">
+    <section>
+      <div className="relative flex items-center justify-center w-50 h-50">
         <Image
-          className="aspect-square border mr-12 border-(--border) rounded-full bg-(--card) object-cover"
+          className="aspect-square border mr-16 border-amber-100 rounded-full bg-white object-cover"
           width={110}
           height={110}
           src="/pfpp.png"
           alt="Profile picture"
         />
-        <SpinningText radius={6.8} className="mr-12 absolute">
+
+        <SpinningText radius={6.8} className="mr-16 absolute">
           {`BUILD • SHIP • LEARN • REPEAT •`}
         </SpinningText>
       </div>
@@ -29,12 +32,12 @@ export default function Page() {
       <TextScramble
         duration={1.5}
         characterSet=". "
-        className="mb-8 text-md text-(--muted-foreground) font-extralight"
+        className="mb-8 text-md text-white/50 font-extralight"
       >
         Trying to understand tech
       </TextScramble>
 
-      <p className="mb-4 text-(--muted-foreground)">
+      <p className="mb-4">
         {`I'm a Vim enthusiast and tab advocate, finding unmatched efficiency in
         Vim's keystroke commands and tabs' flexibility for personal viewing
         preferences. This extends to my support for static typing, where its
@@ -42,7 +45,7 @@ export default function Page() {
         mode, which eases long coding sessions by reducing eye strain.`}
       </p>
       <div className="my-8">
-        <ThemePaletteSlider />
+        <ThemePaletteSlider/>
       </div>
       <div className="my-8">
         <GithubHeatmap />

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 import { Navbar } from "../components/nav";
 
-import Footer from "../components/Footer";
+import Footer from "../components/footer";
 import { baseUrl } from "./sitemap";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemePaletteHydrator } from "@/components/ThemePaletteSlider";
@@ -36,19 +36,13 @@ export const metadata: Metadata = {
   },
 };
 
-const cx = (...classes) => classes.filter(Boolean).join(" ");
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={cx("text-(--foreground) bg-(--background)")}
-    >
+    <html lang="en" suppressHydrationWarning>
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ThemePaletteHydrator />
