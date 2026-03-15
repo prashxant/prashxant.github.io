@@ -47,6 +47,9 @@ importers:
       react-github-calendar:
         specifier: ^5.0.5
         version: 5.0.5(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      react-use-measure:
+        specifier: ^2.1.7
+        version: 2.1.7(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       sugar-high:
         specifier: ^0.9.5
         version: 0.9.5
@@ -911,6 +914,15 @@ packages:
     resolution: {integrity: sha512-eZ7aSI626nY9ni/lr7ygkqD6c2adPKRb+hr7yzF+BKxKs0VBJ2FPC0EFRthk8mQQSlfzTJrbUA/uR2/ZOIAs0Q==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
+
+  react-use-measure@2.1.7:
+    resolution: {integrity: sha512-KrvcAo13I/60HpwGO5jpW7E9DfusKyLPLvuHlUyP5zqnmAPhNc6qTRjUQrdTADl0lpPpDVU2/Gg51UlOGHXbdg==}
+    peerDependencies:
+      react: '>=16.13'
+      react-dom: '>=16.13'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
 
   react@19.2.4:
     resolution: {integrity: sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ==}
@@ -2051,6 +2063,12 @@ snapshots:
       react-activity-calendar: 3.1.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
     transitivePeerDependencies:
       - react-dom
+
+  react-use-measure@2.1.7(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+    dependencies:
+      react: 19.2.4
+    optionalDependencies:
+      react-dom: 19.2.4(react@19.2.4)
 
   react@19.2.4: {}
 

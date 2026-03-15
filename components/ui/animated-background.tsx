@@ -5,16 +5,27 @@ import { AnimatePresence, motion, Transition } from "motion/react";
 import {
   Children,
   cloneElement,
+  ReactNode,
   ReactElement,
   useEffect,
   useId,
   useState,
 } from "react";
 
+type AnimatedBackgroundChildProps = {
+  "data-id": string;
+  className?: string;
+  children?: ReactNode;
+  onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  "data-checked"?: "true" | "false";
+};
+
 export type AnimatedBackgroundProps = {
   children:
-    | ReactElement<{ "data-id": string }>[]
-    | ReactElement<{ "data-id": string }>;
+    | ReactElement<AnimatedBackgroundChildProps>[]
+    | ReactElement<AnimatedBackgroundChildProps>;
   defaultValue?: string;
   onValueChange?: (newActiveId: string | null) => void;
   className?: string;

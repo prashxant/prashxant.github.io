@@ -22,7 +22,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     label: "rss",
-    link: "/rss",
+    link: "/rss.xml",
   },
 ];
 

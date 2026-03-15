@@ -3,9 +3,10 @@ import type { Metadata } from "next";
 
 import { Navbar } from "../components/nav";
 
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 import { baseUrl } from "./sitemap";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ThemePaletteHydrator } from "@/components/ThemePaletteSlider";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -46,11 +47,11 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cx(
-        "text-black bg-white dark:text-white dark:bg-black")}
+      className={cx("text-(--foreground) bg-(--background)")}
     >
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemePaletteHydrator />
           <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
             <Navbar />
             {children}

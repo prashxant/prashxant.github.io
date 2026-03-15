@@ -1,8 +1,10 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 ::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
+  background-color: var(--selection-bg);
+  color: var(--selection-fg);
 }
 
 :root {
@@ -15,22 +17,63 @@
   --sh-jsxliterals: #6266d1;
   --sh-property: #e25a1c;
   --sh-entity: #e25a1c;
+  --background: #ffffff;
+  --foreground: #0f1419;
+  --card: #f7f8f8;
+  --card-foreground: #0f1419;
+  --muted: #e5e5e6;
+  --muted-foreground: #0f1419;
+  --primary: #1e9df1;
+  --primary-foreground: #ffffff;
+  --accent: #e3ecf6;
+  --accent-foreground: #1e9df1;
+  --border: #e1eaef;
+  --ring: #1da1f2;
+  --selection-bg: #1e9df1;
+  --selection-fg: #ffffff;
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-  }
-  html {
-    color-scheme: dark;
-  }
+:root.dark {
+  --sh-class: #4c97f8;
+  --sh-identifier: white;
+  --sh-keyword: #f47067;
+  --sh-string: #0fa295;
+  --background: #000000;
+  --foreground: #e7e9ea;
+  --card: #17181c;
+  --card-foreground: #d9d9d9;
+  --muted: #181818;
+  --muted-foreground: #72767a;
+  --primary: #1c9cf0;
+  --primary-foreground: #ffffff;
+  --accent: #061622;
+  --accent-foreground: #1c9cf0;
+  --border: #242628;
+  --ring: #1da1f2;
+  --selection-bg: #1c9cf0;
+  --selection-fg: #ffffff;
+  color-scheme: dark;
 }
 
 html {
   min-width: 360px;
+}
+
+html,
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+a {
+  color: var(--primary);
 }
 
 .prose .anchor {
@@ -53,7 +96,7 @@ html {
 
 .prose .anchor:after {
   @apply text-neutral-300 dark:text-neutral-700;
-  content: '#';
+  content: "#";
 }
 
 .prose *:hover > .anchor {
@@ -131,8 +174,8 @@ pre {
 }
 
 /* Remove Safari input shadow on mobile */
-input[type='text'],
-input[type='email'] {
+input[type="text"],
+input[type="email"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

@@ -37,7 +37,7 @@ function ThemeSwitch() {
 
   return (
     <AnimatedBackground
-      className="pointer-events-none rounded-lg bg-zinc-100 dark:bg-zinc-800"
+      className="pointer-events-none rounded-lg border border-(--border) bg-(--muted)"
       defaultValue={theme}
       transition={{
         type: "spring",
@@ -53,7 +53,7 @@ function ThemeSwitch() {
         return (
           <button
             key={theme.id}
-            className="inline-flex h-7 w-7 items-center justify-center text-zinc-500 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-950 dark:text-zinc-400 dark:data-[checked=true]:text-zinc-50"
+            className="inline-flex h-7 w-7 items-center justify-center text-(--muted-foreground) transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-(--foreground)"
             type="button"
             aria-label={`Switch to ${theme.label} theme`}
             data-id={theme.id}
@@ -68,15 +68,17 @@ function ThemeSwitch() {
 
 export function Footer() {
   return (
-    <footer className="my-16 border-t  border-black px-0 py-4 dark:border-white">
+    <footer className="my-16 border-t border-(--border) px-0 py-4">
       <div className="flex items-center justify-between">
         <a
           href="https://github.com/prashxant/prashxant.github.io"
           target="_blank"
           rel="noreferrer"
         >
-          <span className="text-xs text-white pr-1">Butilt with</span>
-          <TextLoop className="text-xs text-white">
+          <span className="pr-1 text-xs text-(--muted-foreground)">
+            Butilt with
+          </span>
+          <TextLoop className="text-xs text-(--foreground)">
             <span>Next.js.</span>
             <span>Motion-Primitives.</span>
             <span>Tailwind.</span>
@@ -84,7 +86,7 @@ export function Footer() {
           </TextLoop>
         </a>
 
-        <div className="text-xs text-white">
+        <div className="text-xs text-(--foreground)">
           <ThemeSwitch />
         </div>
       </div>
