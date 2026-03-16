@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { formatDate, getBlogPosts } from "app/blog/utils";
+import { formatDate, getBlogPosts } from "@/app/blog/utils";
 
 export function BlogPosts() {
   let allBlogs = getBlogPosts();
@@ -8,12 +8,11 @@ export function BlogPosts() {
     <div>
       {allBlogs
         .sort((a, b) => {
-          if (
-            new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
-          ) {
-            return -1;
-          }
-          return 1;
+          const dateA = new Date(a.metadata.publishedAt);
+          const dateB = new Date(b.metadata.publishedAt);
+          if (isNaN(dateA.getTime())) return 1;
+          if (isNaN(dateB.getTime())) return -1;
+          return dateB.getTime() - dateA.getTime();
         })
         .map((post) => (
           <Link

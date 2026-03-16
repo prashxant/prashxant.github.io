@@ -11,31 +11,48 @@ type Metadata = {
 function parseFrontmatter(fileContent: string) {
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/
   let match = frontmatterRegex.exec(fileContent)
-  let frontMatterBlock = match![1]
+
+  if (!match) {
+    return {
+      metadata: {
+        title: '',
+        publishedAt: '',
+        summary: '',
+      } as Metadata,
+      content: fileContent,
+    }
+  }
+
+  let frontMatterBlock = match[1]
   let content = fileContent.replace(frontmatterRegex, '').trim()
   let frontMatterLines = frontMatterBlock.trim().split('\n')
   let metadata: Partial<Metadata> = {}
 
   frontMatterLines.forEach((line) => {
     let [key, ...valueArr] = line.split(': ')
-    let value = valueArr.join(': ').trim()
-    value = value.replace(/^['"](.*)['"]$/, '$1') // Remove quotes
-    metadata[key.trim() as keyof Metadata] = value
+    if (key) {
+      let value = valueArr.join(': ').trim()
+      value = value.replace(/^['"](.*)['"]$/, '$1') // Remove quotes
+      metadata[key.trim() as keyof Metadata] = value
+    }
   })
 
   return { metadata: metadata as Metadata, content }
 }
 
-function getMDXFiles(dir) {
+function getMDXFiles(dir: string) {
+  if (!fs.existsSync(dir)) {
+    return []
+  }
   return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx')
 }
 
-function readMDXFile(filePath) {
+function readMDXFile(filePath: string) {
   let rawContent = fs.readFileSync(filePath, 'utf-8')
   return parseFrontmatter(rawContent)
 }
 
-function getMDXData(dir) {
+function getMDXData(dir: string) {
   let mdxFiles = getMDXFiles(dir)
   return mdxFiles.map((file) => {
     let { metadata, content } = readMDXFile(path.join(dir, file))
@@ -54,11 +71,17 @@ export function getBlogPosts() {
 }
 
 export function formatDate(date: string, includeRelative = false) {
+  if (!date) {
+    return "";
+  }
   let currentDate = new Date()
   if (!date.includes('T')) {
     date = `${date}T00:00:00`
   }
   let targetDate = new Date(date)
+  if (isNaN(targetDate.getTime())) {
+    return "";
+  }
 
   let yearsAgo = currentDate.getFullYear() - targetDate.getFullYear()
   let monthsAgo = currentDate.getMonth() - targetDate.getMonth()

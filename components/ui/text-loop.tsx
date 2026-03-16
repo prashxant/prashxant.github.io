@@ -1,25 +1,22 @@
-"use client";
-
-import { cn } from "@/lib/utils";
+"use client"
 import {
   AnimatePresence,
-  AnimatePresenceProps,
   motion,
+  MotionConfig,
   Transition,
   Variants,
-} from "motion/react";
-import { Children, useEffect, useState } from "react";
+} from "motion/react"
+import { Children, useEffect, useState } from "react"
+import { cn } from "@/lib/utils"
 
 export type TextLoopProps = {
-  children: React.ReactNode[];
-  className?: string;
-  interval?: number;
-  transition?: Transition;
-  variants?: Variants;
-  onIndexChange?: (index: number) => void;
-  trigger?: boolean;
-  mode?: AnimatePresenceProps["mode"];
-};
+  children: React.ReactNode[]
+  className?: string
+  interval?: number
+  transition?: Transition
+  variants?: Variants
+  onIndexChange?: (index: number) => void
+}
 
 export function TextLoop({
   children,
@@ -28,48 +25,41 @@ export function TextLoop({
   transition = { duration: 0.3 },
   variants,
   onIndexChange,
-  trigger = true,
-  mode = "popLayout",
 }: TextLoopProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const items = Children.toArray(children);
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const items = Children.toArray(children)
 
   useEffect(() => {
-    if (!trigger || items.length <= 1) {
-      return;
-    }
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % items.length)
+    }, interval * 1000)
+    return () => clearInterval(timer)
+  }, [items.length, interval])
 
-    const timer = window.setInterval(() => {
-      setCurrentIndex((current) => {
-        const next = (current + 1) % items.length;
-        onIndexChange?.(next);
-        return next;
-      });
-    }, interval * 1000);
+  useEffect(() => {
+    if (onIndexChange) onIndexChange(currentIndex)
+  }, [currentIndex, onIndexChange])
 
-    return () => window.clearInterval(timer);
-  }, [interval, items.length, onIndexChange, trigger]);
-
-  const motionVariants: Variants = {
+  const motionVariants: Variants = variants || {
     initial: { y: 20, opacity: 0 },
     animate: { y: 0, opacity: 1 },
     exit: { y: -20, opacity: 0 },
-  };
+  }
 
   return (
-    <div className={cn("relative inline-block whitespace-nowrap", className)}>
-      <AnimatePresence mode={mode} initial={false}>
+    <div className={cn("relative inline-block overflow-hidden", className)}>
+      <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
           initial="initial"
           animate="animate"
           exit="exit"
           transition={transition}
-          variants={variants ?? motionVariants}
+          variants={motionVariants}
         >
           {items[currentIndex]}
         </motion.div>
       </AnimatePresence>
     </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import { getBlogPosts } from "app/blog/utils";
+import { getBlogPosts } from "@/app/blog/utils";
 
 export const dynamic = "force-static";
 export const baseUrl =

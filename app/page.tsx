@@ -1,7 +1,7 @@
-import { BlogPosts } from "components/posts";
-import { SpinningText } from "components/motion-primitives/spinning-text";
+import { BlogPosts } from "@/components/posts";
+import { SpinningText } from "@/components/motion-primitives/spinning-text";
 import Image from "next/image";
-import { TextScramble } from "components/motion-primitives/text-scramble";
+import { TextScramble } from "@/components/motion-primitives/text-scramble";
 
 import GithubHeatmap from "@/components/GItHubHeatmap";
 import { ThemePaletteSlider } from "@/components/ThemePaletteSlider";
