@@ -50,6 +50,9 @@ export default function Page() {
         <GithubHeatmap />
       </div>
       <div className="my-8">
+        <h1 className="font-semibold border-b border-(--border) text-2xl mb-8 tracking-tighter">
+          Writings
+        </h1>
         <BlogPosts />
       </div>
       <div className="">
