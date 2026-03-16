@@ -37,7 +37,7 @@ function ThemeSwitch() {
 
   return (
     <AnimatedBackground
-      className="pointer-events-none rounded-lg border border-(--border) bg-(--muted)"
+      className="rounded-lg border border-(--border) bg-(--muted)"
       defaultValue={theme}
       transition={{
         type: "spring",
@@ -69,13 +69,14 @@ function ThemeSwitch() {
 export function Footer() {
   return (
     <footer className="my-16 border-t border-(--border) px-0 py-4">
-      <div className="flex items-center justify-between">
+      <div className="flex items-end justify-between">
         <a
           href="https://github.com/prashxant/prashxant.github.io"
           target="_blank"
           rel="noreferrer"
+          className="flex gap-2"
         >
-          <span className="pr-1 text-xs text-(--muted-foreground)">
+          <span className=" text-xs  text-(--muted-foreground)">
             Butilt with
           </span>
           <TextLoop className="text-xs text-(--foreground)">
