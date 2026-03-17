@@ -98,7 +98,7 @@ export const TimeBadge = () => {
         <SlidingNumber value={time.minutes} padStart />
 
         {/* 🔥 Animated AM/PM */}
-        <div className="relative ml-1 h-3.5 overflow-hidden">
+        <div className="relative mb-1 ml-1 h-3.5 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.span
               key={time.period}
@@ -106,7 +106,7 @@ export const TimeBadge = () => {
               animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
               exit={{ y: -8, opacity: 0, filter: "blur(4px)" }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="block text-[10px] uppercase tracking-widest text-(--muted-foreground)"
+              className="block text-[14px]  uppercase tracking-widest text-(--muted-foreground)"
             >
               {time.period}
             </motion.span>
