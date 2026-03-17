@@ -72,7 +72,7 @@ export const TimeBadge = () => {
         inline-flex flex-row-reverse items-center gap-2 ml-2 mr-2 px-3 p-px
         rounded-md font-mono text-(--foreground)
         backdrop-blur-xl
-        border border-(--border)
+        hover:border border-(--border)
         hover:shadow-[0_4px_20px_color-mix(in_oklab,var(--foreground)_18%,transparent)]
         hover:bg-(--card) transition-colors
       "
