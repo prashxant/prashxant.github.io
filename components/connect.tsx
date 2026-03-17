@@ -22,7 +22,7 @@ export const Connect = () => {
           {EMAIL}
         </a>
       </p>
-      <div className="flex  flex-col md:flex-row items-center justify-start space-x-3 ">
+      <div className="flex  flex-col md:flex-row md:space-y-0 md:space-x-3 items-center justify-start space-x-3 ">
         {SOCIAL_LINKS.map((link) => (
           <MagneticSocialLink key={link.label} link={link.link}>
             {link.label}
