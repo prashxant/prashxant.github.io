@@ -127,7 +127,7 @@ function ThemeSwitch() {
 
 export function Footer() {
   return (
-    <footer className="my-16 border-t  border-(--border) px-0 py-4">
+    <footer className="my-8 border-t  border-(--border) px-0 py-4">
       <div className="flex items-end justify-between">
         <a
           href="https://github.com/prashxant/prashxant.github.io"
