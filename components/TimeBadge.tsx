@@ -69,7 +69,7 @@ export const TimeBadge = () => {
           "color-mix(in oklab, var(--background) 50%, transparent)",
       }}
       className="
-        inline-flex items-center gap-2 ml-2 mr-2 px-3 p-px
+        inline-flex flex-row-reverse items-center gap-2 ml-2 mr-2 px-3 p-px
         rounded-md font-mono text-(--foreground)
         backdrop-blur-xl
         border border-(--border)
