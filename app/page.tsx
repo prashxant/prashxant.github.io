@@ -28,7 +28,7 @@ export default function Page() {
         <TextScramble className="font-mono text-2xl font-semibold tracking-tighter ">
           Prashant Sharma
         </TextScramble>
-        <TimeBadge/>
+        <TimeBadge />
       </div>
       <TextScramble
         duration={1.5}
@@ -39,12 +39,8 @@ export default function Page() {
       </TextScramble>
 
       <div className="mb-4">
-        {`I'm a Vim enthusiast and tab advocate, form`}
-        {`finding unmatched efficiency in
-        Vim's keystroke commands and tabs' flexibility for personal viewing
-        preferences. This extends to my support for static typing, where its
-        early error detection ensures cleaner code, and my preference for dark
-        mode, which eases long coding sessions by reducing eye strain.`}
+        {`I build full-stack products with a focus on speed, clean architecture, and strong fundamentals.
+        Working with Next.js, React, Postgres, Prisma, and modern UI systems.Currently exploring AI workflows and looking for opportunities to build meaningful products.`}
       </div>
       <div className="my-8">
         <ThemePaletteSlider />

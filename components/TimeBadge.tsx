@@ -87,7 +87,14 @@ export const TimeBadge = () => {
       {/* Clock */}
       <div className="flex items-center gap-0.5">
         <SlidingNumber value={time.hours} padStart />
-        <span className="text-(--muted-foreground)">:</span>
+        <motion.span
+          aria-hidden="true"
+          animate={{ opacity: time.seconds % 2 === 0 ? 1 : 0 }}
+          transition={{ duration: 0.15, ease: "easeOut" }}
+          className="text-(--muted-foreground) transition "
+        >
+          :
+        </motion.span>
         <SlidingNumber value={time.minutes} padStart />
 
         {/* 🔥 Animated AM/PM */}
