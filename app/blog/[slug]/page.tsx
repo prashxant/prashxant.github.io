@@ -3,6 +3,14 @@ import { CustomMDX } from "@/components/mdx";
 import { formatDate, getBlogPosts } from "@/app/blog/utils";
 import { baseUrl } from "@/app/sitemap";
 
+function getAbsoluteImageUrl(image?: string) {
+  if (!image) {
+    return `${baseUrl}/pfpp.png`;
+  }
+
+  return image.startsWith("http") ? image : `${baseUrl}${image}`;
+}
+
 export async function generateStaticParams() {
   let posts = getBlogPosts();
 
@@ -11,7 +19,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   let post = getBlogPosts().find((post) => post.slug === slug);
   if (!post) {
@@ -22,9 +34,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title,
     publishedAt: publishedTime,
     summary: description,
-    image,
+    hoverimage,
   } = post.metadata;
-  let ogImage = image ? image : `${baseUrl}/pfpp.png`;
+  let ogImage = getAbsoluteImageUrl(hoverimage);
 
   return {
     title,
@@ -50,13 +62,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function Blog({ params }: { params: Promise<{ slug: string }> }) {
+export default async function Blog({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   let post = getBlogPosts().find((post) => post.slug === slug);
 
   if (!post) {
     notFound();
   }
+
+  let structuredDataImage = getAbsoluteImageUrl(post.metadata.hoverimage);
 
   return (
     <section>
@@ -71,9 +89,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
             description: post.metadata.summary,
-            image: post.metadata.image
-              ? `${baseUrl}${post.metadata.image}`
-              : `${baseUrl}/pfpp.png`,
+            image: structuredDataImage,
             url: `${baseUrl}/blog/${post.slug}`,
             author: {
               "@type": "Person",
