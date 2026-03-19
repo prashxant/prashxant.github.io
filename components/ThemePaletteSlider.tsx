@@ -1167,8 +1167,8 @@ function PalettePill({
       className={cn(
         "group flex items-center gap-4 rounded-2xl border px-4 py-3 text-left transition-[transform,opacity] duration-300 will-change-transform",
         isActive
-          ? "scale-[1.02]"
-          : "opacity-90 hover:scale-[1.01] hover:opacity-100",
+          ? "scale-[1.02] "
+          : "opacity-90 hover:scale-[1.01]  hover:opacity-100",
       )}
       style={{
         backgroundColor: tokens.card,

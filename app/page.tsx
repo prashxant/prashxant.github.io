@@ -73,6 +73,9 @@ export default function Page() {
       <p className="mb-4">{SHORT_BIO}</p>
 
       <div className="my-8">
+        <p className="font-extralight pl-1 text-end italic text-sm tracking-tighter">
+          Try different styles
+        </p>
         <ThemePaletteSlider />
       </div>
       <div className="my-8">
