@@ -38,6 +38,7 @@ export function BlogPosts() {
                 }}
               >
                 <Image
+                loading="lazy"
                   width={128}
                   height={128}
                   src={post.metadata.hoverimage || ""}

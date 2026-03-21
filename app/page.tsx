@@ -3,7 +3,6 @@ import { BlogPosts } from "@/components/posts";
 import { SpinningText } from "@/components/motion-primitives/spinning-text";
 import Image from "next/image";
 import { TextScramble } from "@/components/motion-primitives/text-scramble";
-
 import { Connect } from "@/components/connect";
 import { TimeBadge } from "@/components/TimeBadge";
 
